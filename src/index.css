@@ -1,13 +1,67 @@
+/* src/index.css */
+
+:root {
+  /* Theme variables are now set via ThemeContext */
+  --primary-color: #4a6fa5;
+  --secondary-color: #48bb78;
+  --font-family: Arial, sans-serif;
+  --font-size: 16px;
+  --border-radius: 8px;
+  
+  /* Default theme variables (light theme) */
+  --background: #f0f4f8;
+  --cardBackground: #ffffff;
+  --text: #2d3748;
+  --textSecondary: #718096;
+  --border: #e2e8f0;
+  --primaryButton: #4299e1;
+  --primaryButtonHover: #3182ce;
+  --disabledButton: #a0aec0;
+  --success: #48bb78;
+  --warning: #ed8936;
+  --error: #f56565;
+  --menuBackground: #e2e8f0;
+  --menuItemActive: #4a6fa5;
+  --menuItemActiveText: #ffffff;
+  --menuItemText: #4a5568;
+  --menuItemHover: #cbd5e0;
+  --panelShadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --tooltip: rgba(0, 0, 0, 0.8);
+  --tooltipText: #ffffff;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Simple reset */
+h1, h2, h3, h4, h5, h6, p {
+  margin-top: 0;
+}
+
+/* For better mobile experience */
+@media (max-width: 768px) {
+  button {
+    padding: 10px !important;
+  }
 }
