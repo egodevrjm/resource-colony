@@ -320,7 +320,7 @@ const ColonistManagement = () => {
     technician: 0
   });
   
-  const totalPopulation = safeNumber(resources.population, 0);
+  const totalPopulation = Math.floor(safeNumber(resources.population, 0));
   const assignedPopulation = Object.values(assignedRoles).reduce((sum, count) => sum + count, 0);
   const unassignedPopulation = totalPopulation - assignedPopulation;
   

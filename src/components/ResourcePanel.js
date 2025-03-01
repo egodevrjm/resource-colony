@@ -388,7 +388,8 @@ const ResourcePanel = () => {
           
           // Calculate percentage for progress bar
           const capacity = resourceCapacities[key] || 1000;
-          const percentage = Math.min((value / capacity) * 100, 100);
+          const adjustedValue = key === 'population' ? Math.floor(value) : value;
+          const percentage = Math.min((adjustedValue / capacity) * 100, 100);
           
           return (
             <ResourceItem 
@@ -428,7 +429,11 @@ const ResourcePanel = () => {
               </ResourceHeader>
               
               <ResourceInfo>
-                <ResourceValue>{safeNumber(value, 0).toFixed(0)}</ResourceValue>
+                <ResourceValue>
+                  {key === 'population' 
+                    ? Math.floor(safeNumber(value, 0)) 
+                    : safeNumber(value, 0).toFixed(0)}
+                </ResourceValue>
                 <ResourceRate>
                   {(productionRates[key] > 0 ? '+' : '') + 
                    safeNumber(productionRates[key], 0).toFixed(1) + ' / sec'}
@@ -443,7 +448,9 @@ const ResourcePanel = () => {
               </ProgressBarContainer>
               
               <CapacityInfo>
-                {safeNumber(value, 0).toFixed(0)} / {capacity.toLocaleString()}
+                {key === 'population' 
+                  ? `${Math.floor(safeNumber(value, 0))} / ${capacity.toLocaleString()}`
+                  : `${safeNumber(value, 0).toFixed(0)} / ${capacity.toLocaleString()}`}
               </CapacityInfo>
               
               {resourceConfig[key].clickable && (
